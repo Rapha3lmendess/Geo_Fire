@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- Faz o site se adaptar ao celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GeoFire - Monitoramento de Incêndios</title>
+
+    <!-- Ligação com o arquivo CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+
+        <div class="logo">
+            🔥 GeoFire
+        </div>
+
+        <nav>
+            <a href="#">Início</a>
+            <a href="#dados">Dados</a>
+            <a href="#sobre">Sobre</a>
+        </nav>
+
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+
+        <!-- TÍTULO -->
+        <section class="hero">
+
+            <h1>Monitoramento de Incêndios</h1>
+
+            <p>
+                Visualização e análise de ocorrências de incêndios
+                por estado.
+            </p>
+
+        </section>
+
+
+        <!-- CARDS -->
+        <section class="cards">
+
+            <div class="card">
+
+                <span>🔥</span>
+
+                <h2 id="totalIncendios">0</h2>
+
+                <p>Total de ocorrências</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <span>📍</span>
+
+                <h2 id="estadoMaior">-</h2>
+
+                <p>Estado com mais ocorrências</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <span>📊</span>
+
+                <h2 id="mediaIncendios">0</h2>
+
+                <p>Média de ocorrências</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ÁREA DE DADOS -->
+        <section id="dados" class="dados">
+
+            <div class="titulo-secao">
+
+                <h2>Dados dos incêndios</h2>
+
+                <p>
+                    Utilize o filtro para consultar os registros.
+                </p>
+
+            </div>
+
+
+            <!-- FILTRO -->
+            <div class="filtro">
+
+                <label for="filtroEstado">
+                    Filtrar por estado:
+                </label>
+
+                <select id="filtroEstado">
+
+                    <option value="todos">
+                        Todos os estados
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- TABELA -->
+            <div class="tabela-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Ano</th>
+
+                            <th>Estado</th>
+
+                            <th>Mês</th>
+
+                            <th>Ocorrências</th>
+
+                            <th>Data</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaIncendios">
+
+                        <!-- JavaScript colocará os dados aqui -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOBRE -->
+        <section id="sobre" class="sobre">
+
+            <h2>Sobre o projeto</h2>
+
+            <p>
+
+                O GeoFire é um projeto desenvolvido para estudar
+                HTML, CSS e JavaScript utilizando dados relacionados
+                a incêndios e queimadas.
+
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <p>
+            GeoFire © 2026
+        </p>
+
+    </footer>
+
+
+    <!-- Ligação com o JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
