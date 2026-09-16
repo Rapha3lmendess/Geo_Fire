@@ -1,193 +1,293 @@
+/* ==================================================
+   GEO FIRE
+   CARREGAMENTO DOS DADOS
+================================================== */
+
 fetch("incendios.csv")
+
     .then(resposta => resposta.text())
+
     .then(dados => {
 
-        // ==================================================
-        // LER O CSV
-        // ==================================================
 
-        const linhas = dados.trim().split("\n");
+        /* ==================================================
+           TRANSFORMA O CSV EM LINHAS
+        ================================================== */
 
-        // Remove o cabeçalho
-        const registros = linhas.slice(1);
-
-        // Transforma cada linha em objeto
-        const incendios = registros.map(linha => {
-
-            const colunas = linha.split(",");
-
-            return {
-                ano: colunas[0].trim(),
-                estado: colunas[1].trim().replace(/"/g, ""),
-                mes: colunas[2].trim().replace(/"/g, ""),
-                quantidade: Number(colunas[3].trim()),
-                data: colunas[4].trim()
-            };
-
-        });
+        const linhas =
+            dados.trim().split("\n");
 
 
-        // ==================================================
-        // ELEMENTOS DO HTML
-        // ==================================================
+        const registros =
+            linhas.slice(1);
+
+
+        /* ==================================================
+           TRANSFORMA CADA LINHA EM OBJETO
+        ================================================== */
+
+        const incendios =
+            registros.map(linha => {
+
+
+                const colunas =
+                    linha.split(",");
+
+
+                return {
+
+                    ano:
+                        colunas[0].trim(),
+
+                    estado:
+                        colunas[1]
+                            .trim()
+                            .replace(/"/g, ""),
+
+                    mes:
+                        colunas[2]
+                            .trim()
+                            .replace(/"/g, ""),
+
+                    quantidade:
+                        Number(
+                            colunas[3].trim()
+                        ),
+
+                    data:
+                        colunas[4].trim()
+
+                };
+
+            });
+
+
+        /* ==================================================
+           ELEMENTOS DO HTML
+        ================================================== */
 
         const tabela =
-            document.getElementById("tabelaIncendios");
+            document.getElementById(
+                "tabelaIncendios"
+            );
+
 
         const filtroEstado =
-            document.getElementById("filtroEstado");
+            document.getElementById(
+                "filtroEstado"
+            );
+
 
         const filtroAno =
-            document.getElementById("filtroAno");
+            document.getElementById(
+                "filtroAno"
+            );
 
 
-        // ==================================================
-        // CONFIGURAÇÃO DA PAGINAÇÃO
-        // ==================================================
+        /* ==================================================
+           PAGINAÇÃO
+        ================================================== */
 
-        // Quantidade de registros por página
         const registrosPorPagina = 20;
 
-        // Página atual
         let paginaAtual = 1;
 
-        // Dados atualmente filtrados
         let dadosAtuais = incendios;
 
 
-        // ==================================================
-        // CRIAR LISTA DE ESTADOS
-        // ==================================================
+        /* ==================================================
+           ESTADOS
+        ================================================== */
 
-        const estados = [...new Set(
-            incendios.map(incendio => incendio.estado)
-        )];
+        const estados = [
+            ...new Set(
+                incendios.map(
+                    incendio =>
+                        incendio.estado
+                )
+            )
+        ];
+
 
         estados.sort();
 
+
         estados.forEach(estado => {
 
+
             const opcao =
-                document.createElement("option");
+                document.createElement(
+                    "option"
+                );
+
 
             opcao.value = estado;
 
             opcao.textContent = estado;
 
-            filtroEstado.appendChild(opcao);
+
+            filtroEstado.appendChild(
+                opcao
+            );
 
         });
 
 
-        // ==================================================
-        // CRIAR LISTA DE ANOS
-        // ==================================================
+        /* ==================================================
+           ANOS
+        ================================================== */
 
-        const anos = [...new Set(
-            incendios.map(incendio => incendio.ano)
-        )];
+        const anos = [
+            ...new Set(
+                incendios.map(
+                    incendio =>
+                        incendio.ano
+                )
+            )
+        ];
 
-        // Ordena do menor para o maior
-        anos.sort((a, b) => Number(a) - Number(b));
+
+        anos.sort(
+            (a, b) =>
+                Number(a) -
+                Number(b)
+        );
+
 
         anos.forEach(ano => {
 
+
             const opcao =
-                document.createElement("option");
+                document.createElement(
+                    "option"
+                );
+
 
             opcao.value = ano;
 
             opcao.textContent = ano;
 
-            filtroAno.appendChild(opcao);
+
+            filtroAno.appendChild(
+                opcao
+            );
 
         });
 
 
-        // ==================================================
-        // MOSTRAR TABELA
-        // ==================================================
+        /* ==================================================
+           MOSTRAR TABELA
+        ================================================== */
 
         function mostrarTabela() {
 
-            // Limpa a tabela
+
             tabela.innerHTML = "";
 
 
-            // Calcula onde começa a página
             const inicio =
                 (paginaAtual - 1) *
                 registrosPorPagina;
 
 
-            // Calcula onde termina a página
             const fim =
-                inicio + registrosPorPagina;
+                inicio +
+                registrosPorPagina;
 
 
-            // Pega somente os registros da página atual
             const registrosPagina =
-                dadosAtuais.slice(inicio, fim);
+                dadosAtuais.slice(
+                    inicio,
+                    fim
+                );
 
 
-            // Mostra os registros
-            registrosPagina.forEach(incendio => {
-
-                const linha =
-                    document.createElement("tr");
-
-                linha.innerHTML = `
-                    <td>${incendio.ano}</td>
-                    <td>${incendio.estado}</td>
-                    <td>${incendio.mes}</td>
-                    <td>${incendio.quantidade.toLocaleString("pt-BR")}</td>
-                    <td>${incendio.data}</td>
-                `;
-
-                tabela.appendChild(linha);
-
-            });
+            registrosPagina.forEach(
+                incendio => {
 
 
-            // Atualiza a paginação
+                    const linha =
+                        document.createElement(
+                            "tr"
+                        );
+
+
+                    linha.innerHTML = `
+
+                        <td>
+                            ${incendio.ano}
+                        </td>
+
+                        <td>
+                            ${incendio.estado}
+                        </td>
+
+                        <td>
+                            ${incendio.mes}
+                        </td>
+
+                        <td>
+                            ${incendio.quantidade.toLocaleString("pt-BR")}
+                        </td>
+
+                        <td>
+                            ${incendio.data}
+                        </td>
+
+                    `;
+
+
+                    tabela.appendChild(
+                        linha
+                    );
+
+                }
+            );
+
+
             atualizarPaginacao();
 
         }
 
 
-        // ==================================================
-        // PAGINAÇÃO
-        // ==================================================
+        /* ==================================================
+           PAGINAÇÃO
+        ================================================== */
 
         function atualizarPaginacao() {
 
-            // Procura a área de paginação
+
             let paginacao =
-                document.getElementById("paginacao");
+                document.getElementById(
+                    "paginacao"
+                );
 
 
-            // Se não existir, cria
             if (!paginacao) {
 
+
                 paginacao =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
 
-                paginacao.id = "paginacao";
+
+                paginacao.id =
+                    "paginacao";
 
 
-                // Coloca depois da tabela
                 document
-                    .querySelector(".tabela-container")
+                    .querySelector(
+                        ".tabela-container"
+                    )
                     .after(paginacao);
 
             }
 
 
-            // Limpa a paginação
             paginacao.innerHTML = "";
 
 
-            // Calcula quantidade total de páginas
             const totalPaginas =
                 Math.ceil(
                     dadosAtuais.length /
@@ -195,8 +295,6 @@ fetch("incendios.csv")
                 );
 
 
-            // Se tiver somente uma página,
-            // não precisa mostrar paginação
             if (totalPaginas <= 1) {
 
                 return;
@@ -204,18 +302,20 @@ fetch("incendios.csv")
             }
 
 
-            // ==================================================
-            // BOTÃO ANTERIOR
-            // ==================================================
+            /* ==================================================
+               BOTÃO ANTERIOR
+            ================================================== */
 
             const botaoAnterior =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
+
 
             botaoAnterior.textContent =
                 "← Anterior";
 
 
-            // Desabilita na primeira página
             botaoAnterior.disabled =
                 paginaAtual === 1;
 
@@ -223,6 +323,7 @@ fetch("incendios.csv")
             botaoAnterior.addEventListener(
                 "click",
                 function () {
+
 
                     if (paginaAtual > 1) {
 
@@ -241,21 +342,29 @@ fetch("incendios.csv")
             );
 
 
-            // ==================================================
-            // FUNÇÃO PARA CRIAR BOTÃO
-            // ==================================================
+            /* ==================================================
+               CRIAR BOTÃO DE PÁGINA
+            ================================================== */
 
-            function criarBotaoPagina(numero) {
+            function criarBotaoPagina(
+                numero
+            ) {
+
 
                 const botao =
-                    document.createElement("button");
+                    document.createElement(
+                        "button"
+                    );
 
 
-                botao.textContent = numero;
+                botao.textContent =
+                    numero;
 
 
-                // Destaca a página atual
-                if (numero === paginaAtual) {
+                if (
+                    numero ===
+                    paginaAtual
+                ) {
 
                     botao.classList.add(
                         "pagina-atual"
@@ -268,7 +377,10 @@ fetch("incendios.csv")
                     "click",
                     function () {
 
-                        paginaAtual = numero;
+
+                        paginaAtual =
+                            numero;
+
 
                         mostrarTabela();
 
@@ -276,21 +388,15 @@ fetch("incendios.csv")
                 );
 
 
-                paginacao.appendChild(botao);
+                paginacao.appendChild(
+                    botao
+                );
 
             }
 
 
-            // ==================================================
-            // PRIMEIRA PÁGINA
-            // ==================================================
-
             criarBotaoPagina(1);
 
-
-            // ==================================================
-            // DEFINIR PÁGINAS PRÓXIMAS
-            // ==================================================
 
             let inicio =
                 Math.max(
@@ -306,18 +412,23 @@ fetch("incendios.csv")
                 );
 
 
-            // ==================================================
-            // RETICÊNCIAS INICIAIS
-            // ==================================================
-
             if (inicio > 2) {
 
+
                 const pontos =
-                    document.createElement("span");
+                    document.createElement(
+                        "span"
+                    );
 
-                pontos.textContent = "...";
 
-                pontos.classList.add("pontos");
+                pontos.textContent =
+                    "...";
+
+
+                pontos.classList.add(
+                    "pontos"
+                );
+
 
                 paginacao.appendChild(
                     pontos
@@ -325,10 +436,6 @@ fetch("incendios.csv")
 
             }
 
-
-            // ==================================================
-            // PÁGINAS PRÓXIMAS
-            // ==================================================
 
             for (
                 let pagina = inicio;
@@ -336,26 +443,33 @@ fetch("incendios.csv")
                 pagina++
             ) {
 
-                criarBotaoPagina(pagina);
+                criarBotaoPagina(
+                    pagina
+                );
 
             }
 
-
-            // ==================================================
-            // RETICÊNCIAS FINAIS
-            // ==================================================
 
             if (
                 fim <
                 totalPaginas - 1
             ) {
 
+
                 const pontos =
-                    document.createElement("span");
+                    document.createElement(
+                        "span"
+                    );
 
-                pontos.textContent = "...";
 
-                pontos.classList.add("pontos");
+                pontos.textContent =
+                    "...";
+
+
+                pontos.classList.add(
+                    "pontos"
+                );
+
 
                 paginacao.appendChild(
                     pontos
@@ -363,10 +477,6 @@ fetch("incendios.csv")
 
             }
 
-
-            // ==================================================
-            // ÚLTIMA PÁGINA
-            // ==================================================
 
             if (totalPaginas > 1) {
 
@@ -377,32 +487,38 @@ fetch("incendios.csv")
             }
 
 
-            // ==================================================
-            // BOTÃO PRÓXIMA
-            // ==================================================
+            /* ==================================================
+               BOTÃO PRÓXIMA
+            ================================================== */
 
             const botaoProxima =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
+
 
             botaoProxima.textContent =
                 "Próxima →";
 
 
-            // Desabilita na última página
             botaoProxima.disabled =
-                paginaAtual === totalPaginas;
+                paginaAtual ===
+                totalPaginas;
 
 
             botaoProxima.addEventListener(
                 "click",
                 function () {
 
+
                     if (
                         paginaAtual <
                         totalPaginas
                     ) {
 
+
                         paginaAtual++;
+
 
                         mostrarTabela();
 
@@ -419,13 +535,15 @@ fetch("incendios.csv")
         }
 
 
-        // ==================================================
-        // ATUALIZAR CARDS
-        // ==================================================
+        /* ==================================================
+           ATUALIZAR CARDS
+        ================================================== */
 
-        function atualizarCards(dados) {
+        function atualizarCards(
+            dados
+        ) {
 
-            // Soma todas as ocorrências
+
             const total =
                 dados.reduce(
                     (soma, incendio) => {
@@ -438,45 +556,42 @@ fetch("incendios.csv")
                 );
 
 
-            // Calcula a média
             const media =
                 dados.length > 0
                     ? total / dados.length
                     : 0;
 
 
-            // ==================================================
-            // OCORRÊNCIAS POR ESTADO
-            // ==================================================
-
-            const ocorrenciasPorEstado = {};
+            const ocorrenciasPorEstado =
+                {};
 
 
-            dados.forEach(incendio => {
+            dados.forEach(
+                incendio => {
 
-                if (
-                    !ocorrenciasPorEstado[
-                        incendio.estado
-                    ]
-                ) {
+
+                    if (
+                        !ocorrenciasPorEstado[
+                            incendio.estado
+                        ]
+                    ) {
+
+
+                        ocorrenciasPorEstado[
+                            incendio.estado
+                        ] = 0;
+
+                    }
+
 
                     ocorrenciasPorEstado[
                         incendio.estado
-                    ] = 0;
+                    ] +=
+                        incendio.quantidade;
 
                 }
+            );
 
-
-                ocorrenciasPorEstado[
-                    incendio.estado
-                ] += incendio.quantidade;
-
-            });
-
-
-            // ==================================================
-            // ESTADO COM MAIS OCORRÊNCIAS
-            // ==================================================
 
             let estadoMaior = "-";
 
@@ -484,16 +599,24 @@ fetch("incendios.csv")
 
 
             for (
-                const estado in ocorrenciasPorEstado
+                const estado
+                in ocorrenciasPorEstado
             ) {
 
+
                 if (
-                    ocorrenciasPorEstado[estado] >
+                    ocorrenciasPorEstado[
+                        estado
+                    ] >
                     maiorQuantidade
                 ) {
 
+
                     maiorQuantidade =
-                        ocorrenciasPorEstado[estado];
+                        ocorrenciasPorEstado[
+                            estado
+                        ];
+
 
                     estadoMaior =
                         estado;
@@ -503,14 +626,12 @@ fetch("incendios.csv")
             }
 
 
-            // ==================================================
-            // ATUALIZAR OS CARDS
-            // ==================================================
-
             document.getElementById(
                 "totalIncendios"
             ).textContent =
-                total.toLocaleString("pt-BR");
+                total.toLocaleString(
+                    "pt-BR"
+                );
 
 
             document.getElementById(
@@ -532,59 +653,55 @@ fetch("incendios.csv")
         }
 
 
-        // ==================================================
-        // APLICAR FILTROS
-        // ==================================================
+        /* ==================================================
+           APLICAR FILTROS
+        ================================================== */
 
         function aplicarFiltros() {
 
-            // Estado selecionado
+
             const estadoSelecionado =
                 filtroEstado.value;
 
 
-            // Ano selecionado
             const anoSelecionado =
                 filtroAno.value;
 
 
-            // Filtra os dados
             dadosAtuais =
-                incendios.filter(incendio => {
+                incendios.filter(
+                    incendio => {
 
 
-                    // Verifica estado
-                    const correspondeEstado =
-                        estadoSelecionado === "todos" ||
-                        incendio.estado ===
-                        estadoSelecionado;
+                        const correspondeEstado =
+                            estadoSelecionado ===
+                            "todos" ||
+                            incendio.estado ===
+                            estadoSelecionado;
 
 
-                    // Verifica ano
-                    const correspondeAno =
-                        anoSelecionado === "todos" ||
-                        incendio.ano ===
-                        anoSelecionado;
+                        const correspondeAno =
+                            anoSelecionado ===
+                            "todos" ||
+                            incendio.ano ===
+                            anoSelecionado;
 
 
-                    // Precisa corresponder aos dois
-                    return (
-                        correspondeEstado &&
-                        correspondeAno
-                    );
+                        return (
+                            correspondeEstado &&
+                            correspondeAno
+                        );
 
-                });
+                    }
+                );
 
 
-            // Volta para a primeira página
             paginaAtual = 1;
 
 
-            // Atualiza tabela
             mostrarTabela();
 
 
-            // Atualiza os cards
             atualizarCards(
                 dadosAtuais
             );
@@ -592,16 +709,12 @@ fetch("incendios.csv")
         }
 
 
-        // ==================================================
-        // INICIAR PROJETO
-        // ==================================================
+        /* ==================================================
+           INICIALIZAÇÃO
+        ================================================== */
 
         aplicarFiltros();
 
-
-        // ==================================================
-        // EVENTO DO FILTRO DE ESTADO
-        // ==================================================
 
         filtroEstado.addEventListener(
             "change",
@@ -609,38 +722,33 @@ fetch("incendios.csv")
         );
 
 
-        // ==================================================
-        // EVENTO DO FILTRO DE ANO
-        // ==================================================
-
         filtroAno.addEventListener(
             "change",
             aplicarFiltros
         );
 
 
-        // ==================================================
-        // INFORMAÇÕES NO CONSOLE
-        // ==================================================
-
         console.log(
             "Dados carregados:",
             incendios
         );
+
 
         console.log(
             "Quantidade de registros:",
             incendios.length
         );
 
+
     })
 
 
-    // ==================================================
-    // CASO OCORRA ALGUM ERRO
-    // ==================================================
+    /* ==================================================
+       ERRO NO CSV
+    ================================================== */
 
     .catch(erro => {
+
 
         console.error(
             "Erro ao carregar o arquivo:",
@@ -648,3 +756,206 @@ fetch("incendios.csv")
         );
 
     });
+
+
+
+/* ==================================================
+   MODO CLARO / MODO ESCURO
+================================================== */
+
+
+/* Botão */
+
+const botaoTema =
+    document.getElementById(
+        "botaoTema"
+    );
+
+
+/* Imagem */
+
+const imagemTema =
+    document.getElementById(
+        "imagemTema"
+    );
+
+
+/* ==================================================
+   LINKS DAS IMAGENS
+================================================== */
+
+
+/* Imagem do MODO CLARO */
+
+const imagemClara =
+    "https://images.pexels.com/photos/37812265/pexels-photo-37812265.jpeg";
+
+
+/* Imagem do MODO ESCURO */
+
+const imagemEscura =
+    "https://oeco.org.br/wp-content/uploads/2024/09/Oeco_incendio-Pantanal_MS_Foto-Lalo-de-Almeida-Folhapress-1-1920x1280.jpg";
+
+
+/* ==================================================
+   VERIFICA TEMA SALVO
+================================================== */
+
+const temaSalvo =
+    localStorage.getItem(
+        "temaGeoFire"
+    );
+
+
+/* ==================================================
+   TEMA ESCURO SALVO
+================================================== */
+
+if (
+    temaSalvo ===
+    "escuro"
+) {
+
+
+    document.body.classList.add(
+        "modo-escuro"
+    );
+
+
+    botaoTema.textContent =
+        "☀️";
+
+
+    botaoTema.setAttribute(
+        "aria-label",
+        "Ativar modo claro"
+    );
+
+
+    imagemTema.src =
+        imagemEscura;
+
+
+    imagemTema.alt =
+        "Incêndio no Pantanal";
+
+
+}
+
+
+/* ==================================================
+   TEMA CLARO
+================================================== */
+
+else {
+
+
+    imagemTema.src =
+        imagemClara;
+
+
+    imagemTema.alt =
+        "Floresta";
+
+}
+
+
+/* ==================================================
+   CLIQUE NO BOTÃO
+================================================== */
+
+botaoTema.addEventListener(
+    "click",
+    function () {
+
+
+        /* Alterna o modo */
+
+        document.body.classList.toggle(
+            "modo-escuro"
+        );
+
+
+        /* ==================================================
+           MODO ESCURO
+        ================================================== */
+
+        if (
+            document.body.classList.contains(
+                "modo-escuro"
+            )
+        ) {
+
+
+            /* Ícone */
+
+            botaoTema.textContent =
+                "☀️";
+
+
+            botaoTema.setAttribute(
+                "aria-label",
+                "Ativar modo claro"
+            );
+
+
+            /* IMAGEM DA QUEIMADA */
+
+            imagemTema.src =
+                imagemEscura;
+
+
+            imagemTema.alt =
+                "Incêndio no Pantanal";
+
+
+            /* Salva */
+
+            localStorage.setItem(
+                "temaGeoFire",
+                "escuro"
+            );
+
+        }
+
+
+        /* ==================================================
+           MODO CLARO
+        ================================================== */
+
+        else {
+
+
+            /* Ícone */
+
+            botaoTema.textContent =
+                "🌙";
+
+
+            botaoTema.setAttribute(
+                "aria-label",
+                "Ativar modo escuro"
+            );
+
+
+            /* IMAGEM DA MATA */
+
+            imagemTema.src =
+                imagemClara;
+
+
+            imagemTema.alt =
+                "Floresta";
+
+
+            /* Salva */
+
+            localStorage.setItem(
+                "temaGeoFire",
+                "claro"
+            );
+
+        }
+
+    }
+);

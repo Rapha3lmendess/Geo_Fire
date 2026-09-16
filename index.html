@@ -5,17 +5,17 @@
 
     <meta charset="UTF-8">
 
-    <!-- Faz o site se adaptar ao celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>GeoFire - Monitoramento de Incêndios</title>
 
-    <!-- Ligação com o CSS -->
     <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
+
 
     <!-- ==================================================
          CABEÇALHO
@@ -27,7 +27,9 @@
 
             <span class="logo-fogo">🔥</span>
 
-            <span>Geo<span class="verde">Fire</span></span>
+            <span>
+                Geo<span class="vermelho">Fire</span>
+            </span>
 
         </div>
 
@@ -46,9 +48,21 @@
                 Sobre
             </a>
 
+
+            <!-- BOTÃO DO TEMA -->
+
+            <button
+                id="botaoTema"
+                class="botao-tema"
+                aria-label="Ativar modo escuro"
+            >
+                🌙
+            </button>
+
         </nav>
 
     </header>
+
 
 
     <!-- ==================================================
@@ -64,29 +78,40 @@
 
         <section class="hero">
 
+
+            <!-- TEXTO -->
+
             <div class="hero-conteudo">
 
+
                 <span class="tag-ambiental">
-                    🌿 MONITORAMENTO AMBIENTAL
+
+                    🔥 MONITORAMENTO DE QUEIMADAS
+
                 </span>
 
 
                 <h1>
+
                     Monitoramento de
                     <span>Incêndios</span>
+
                 </h1>
 
 
                 <p>
 
-                    Visualização e análise de ocorrências
-                    de incêndios e queimadas por estado
-                    e período.
+                    Visualização e análise de dados sobre
+                    incêndios e queimadas, permitindo
+                    explorar ocorrências por estado e período.
 
                 </p>
 
 
-                <a href="#dados" class="botao-hero">
+                <a
+                    href="#dados"
+                    class="botao-hero"
+                >
 
                     Explorar dados
 
@@ -94,34 +119,42 @@
 
                 </a>
 
+
             </div>
 
 
+
             <!-- ==================================================
-                 IMAGEM PRINCIPAL
+                 IMAGEM
             ================================================== -->
 
             <div class="hero-imagem">
 
+
                 <img
-                    src="https://images.pexels.com/photos/12735797/pexels-photo-12735797.jpeg"
-                    alt="Floresta e vegetação"
+                    id="imagemTema"
+                    src="https://images.pexels.com/photos/37812265/pexels-photo-37812265.jpeg"
+                    alt="Floresta"
                 >
+
 
                 <div class="imagem-overlay"></div>
 
 
                 <div class="indicador-imagem">
 
-                    <span class="ponto-verde"></span>
+                    <span class="ponto-vermelho"></span>
 
-                    Dados ambientais
+                    Monitoramento ativo
 
                 </div>
 
+
             </div>
 
+
         </section>
+
 
 
         <!-- ==================================================
@@ -131,129 +164,181 @@
         <section class="cards">
 
 
-            <!-- CARD TOTAL -->
+            <!-- TOTAL -->
 
-            <div class="card">
+            <div class="card card-incendio">
+
 
                 <div class="card-icone fogo">
+
                     🔥
+
                 </div>
 
 
                 <div class="card-conteudo">
 
+
                     <span class="card-label">
+
                         OCORRÊNCIAS
+
                     </span>
 
 
                     <h2 id="totalIncendios">
+
                         0
+
                     </h2>
 
 
                     <p>
+
                         Total de ocorrências
+
                     </p>
 
+
                 </div>
+
 
             </div>
 
 
-            <!-- CARD ESTADO -->
+
+            <!-- ESTADO -->
 
             <div class="card">
 
+
                 <div class="card-icone mapa">
+
                     📍
+
                 </div>
 
 
                 <div class="card-conteudo">
 
+
                     <span class="card-label">
+
                         DESTAQUE
+
                     </span>
 
 
                     <h2 id="estadoMaior">
+
                         -
+
                     </h2>
 
 
                     <p>
+
                         Estado com mais ocorrências
+
                     </p>
 
+
                 </div>
+
 
             </div>
 
 
-            <!-- CARD MÉDIA -->
+
+            <!-- MÉDIA -->
 
             <div class="card">
 
+
                 <div class="card-icone dados-icone">
+
                     📊
+
                 </div>
 
 
                 <div class="card-conteudo">
 
+
                     <span class="card-label">
+
                         MÉDIA
+
                     </span>
 
 
                     <h2 id="mediaIncendios">
+
                         0
+
                     </h2>
 
 
                     <p>
+
                         Média de ocorrências
+
                     </p>
+
 
                 </div>
 
+
             </div>
+
 
         </section>
 
 
+
         <!-- ==================================================
-             ÁREA DE DADOS
+             DADOS
         ================================================== -->
 
-        <section id="dados" class="dados">
+        <section
+            id="dados"
+            class="dados"
+        >
 
 
             <div class="titulo-secao">
 
+
                 <div>
 
+
                     <span class="titulo-tag">
-                        📊 BASE DE DADOS
+
+                        🔥 BASE DE DADOS
+
                     </span>
 
 
                     <h2>
+
                         Dados dos incêndios
+
                     </h2>
 
 
                     <p>
 
-                        Utilize os filtros para explorar
-                        os registros disponíveis.
+                        Explore os registros de queimadas
+                        utilizando os filtros abaixo.
 
                     </p>
 
+
                 </div>
 
+
             </div>
+
 
 
             <!-- ==================================================
@@ -263,9 +348,10 @@
             <div class="filtros">
 
 
-                <!-- FILTRO ESTADO -->
+                <!-- ESTADO -->
 
                 <div class="campo-filtro">
+
 
                     <label for="filtroEstado">
 
@@ -276,18 +362,25 @@
 
                     <select id="filtroEstado">
 
+
                         <option value="todos">
+
                             Todos os estados
+
                         </option>
 
+
                     </select>
+
 
                 </div>
 
 
-                <!-- FILTRO ANO -->
+
+                <!-- ANO -->
 
                 <div class="campo-filtro">
+
 
                     <label for="filtroAno">
 
@@ -298,15 +391,22 @@
 
                     <select id="filtroAno">
 
+
                         <option value="todos">
+
                             Todos os anos
+
                         </option>
+
 
                     </select>
 
+
                 </div>
 
+
             </div>
+
 
 
             <!-- ==================================================
@@ -315,9 +415,12 @@
 
             <div class="tabela-container">
 
+
                 <table>
 
+
                     <thead>
+
 
                         <tr>
 
@@ -343,16 +446,17 @@
 
                         </tr>
 
+
                     </thead>
 
 
                     <tbody id="tabelaIncendios">
 
-                        <!-- JavaScript colocará os dados aqui -->
-
                     </tbody>
 
+
                 </table>
+
 
             </div>
 
@@ -360,28 +464,39 @@
         </section>
 
 
+
         <!-- ==================================================
-             SOBRE O PROJETO
+             SOBRE
         ================================================== -->
 
-        <section id="sobre" class="sobre">
+        <section
+            id="sobre"
+            class="sobre"
+        >
 
 
             <div class="sobre-icone">
-                🌿
+
+                🔥
+
             </div>
 
 
             <div>
 
+
                 <span class="titulo-tag">
+
                     SOBRE O PROJETO
+
                 </span>
 
 
                 <h2>
-                    Tecnologia a favor do
+
+                    Tecnologia aplicada ao
                     monitoramento ambiental
+
                 </h2>
 
 
@@ -397,14 +512,15 @@
 
                 <p>
 
-                    O projeto utiliza dados em formato CSV
-                    e JavaScript para transformar registros
-                    em informações que podem ser consultadas
-                    de forma simples e organizada.
+                    Os dados são organizados em formato CSV
+                    e processados com JavaScript, permitindo
+                    consultar registros por estado e período.
 
                 </p>
 
+
             </div>
+
 
         </section>
 
@@ -412,11 +528,13 @@
     </main>
 
 
+
     <!-- ==================================================
          RODAPÉ
     ================================================== -->
 
     <footer>
+
 
         <div class="footer-logo">
 
@@ -427,8 +545,8 @@
 
         <p>
 
-            Monitoramento e visualização de dados
-            ambientais.
+            Monitoramento e visualização
+            de dados ambientais.
 
         </p>
 
@@ -439,7 +557,9 @@
 
         </small>
 
+
     </footer>
+
 
 
     <!-- ==================================================
@@ -447,6 +567,7 @@
     ================================================== -->
 
     <script src="script.js"></script>
+
 
 </body>
 

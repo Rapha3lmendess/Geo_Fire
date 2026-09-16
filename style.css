@@ -3,14 +3,19 @@
 ================================================== */
 
 * {
+
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
+
 }
 
 
 html {
+
     scroll-behavior: smooth;
+
 }
 
 
@@ -21,40 +26,97 @@ body {
         Helvetica,
         sans-serif;
 
-    background: #f1f5f2;
+    background: var(--fundo);
 
-    color: #1b2a21;
+    color: var(--texto);
 
     line-height: 1.6;
+
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease;
 
 }
 
 
 /* ==================================================
-   CORES DO PROJETO
+   CORES - MODO CLARO
 ================================================== */
 
 :root {
 
-    --verde-escuro: #123524;
+    --verde-escuro: #173524;
 
-    --verde: #2e7d4f;
+    --verde: #347a4f;
 
-    --verde-claro: #5da875;
+    --verde-claro: #62a875;
 
-    --verde-suave: #e5f1e8;
+    --verde-suave: #e7f1e9;
 
-    --laranja: #f26b21;
+    --vermelho: #d9362b;
 
-    --laranja-claro: #fff0e8;
+    --vermelho-escuro: #a9211c;
+
+    --vermelho-suave: #fff0ee;
+
+    --laranja: #f36b21;
+
+    --laranja-suave: #fff1e8;
 
     --branco: #ffffff;
 
-    --cinza: #68746c;
+    --cinza: #69756e;
 
-    --cinza-claro: #e3e9e5;
+    --cinza-claro: #e0e7e2;
 
-    --fundo: #f1f5f2;
+    --fundo: #f2f5f3;
+
+    --texto: #1b2921;
+
+    --fundo-filtro: #f7f9f7;
+
+    --texto-tabela: #3f4d44;
+
+}
+
+
+/* ==================================================
+   CORES - MODO ESCURO
+================================================== */
+
+body.modo-escuro {
+
+    --verde-escuro: #080d0a;
+
+    --verde: #d9362b;
+
+    --verde-claro: #ff6b3d;
+
+    --verde-suave: #2a1715;
+
+    --vermelho: #ff3b30;
+
+    --vermelho-escuro: #c92821;
+
+    --vermelho-suave: #351817;
+
+    --laranja: #ff762f;
+
+    --laranja-suave: #352016;
+
+    --branco: #171a18;
+
+    --cinza: #aeb7b1;
+
+    --cinza-claro: #303733;
+
+    --fundo: #0b0e0c;
+
+    --texto: #edf1ee;
+
+    --fundo-filtro: #151a17;
+
+    --texto-tabela: #d0d7d2;
 
 }
 
@@ -67,7 +129,12 @@ header {
 
     width: 100%;
 
-    background: var(--verde-escuro);
+    background:
+        linear-gradient(
+            90deg,
+            #101f17,
+            #16271c
+        );
 
     color: white;
 
@@ -86,12 +153,19 @@ header {
     z-index: 1000;
 
     box-shadow:
-        0 3px 15px rgba(0, 0, 0, 0.12);
+        0 4px 20px
+        rgba(0, 0, 0, 0.18);
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.06);
 
 }
 
 
-/* LOGO */
+/* ==================================================
+   LOGO
+================================================== */
 
 .logo {
 
@@ -101,30 +175,32 @@ header {
 
     gap: 8px;
 
-    font-size: 24px;
+    font-size: 25px;
 
     font-weight: bold;
 
-    letter-spacing: -0.5px;
+    letter-spacing: -0.7px;
 
 }
 
 
 .logo-fogo {
 
-    font-size: 25px;
+    font-size: 26px;
 
 }
 
 
-.verde {
+.vermelho {
 
-    color: #75c58d;
+    color: #ff4b3e;
 
 }
 
 
-/* MENU */
+/* ==================================================
+   MENU
+================================================== */
 
 nav {
 
@@ -132,14 +208,14 @@ nav {
 
     align-items: center;
 
-    gap: 32px;
+    gap: 30px;
 
 }
 
 
 nav a {
 
-    color: #dce9df;
+    color: #d9e2dc;
 
     text-decoration: none;
 
@@ -156,14 +232,14 @@ nav a {
 
 nav a:hover {
 
-    color: white;
+    color: #ffffff;
 
 }
 
 
 nav a.ativo {
 
-    color: white;
+    color: #ffffff;
 
 }
 
@@ -182,9 +258,60 @@ nav a.ativo::after {
 
     height: 2px;
 
-    background: #75c58d;
+    background: #ff4b3e;
 
     border-radius: 5px;
+
+}
+
+
+/* ==================================================
+   BOTÃO DO TEMA
+================================================== */
+
+.botao-tema {
+
+    width: 42px;
+
+    height: 42px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    font-size: 19px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.botao-tema:hover {
+
+    background:
+        rgba(255, 75, 62, 0.25);
+
+    border-color:
+        rgba(255, 75, 62, 0.5);
+
+    transform:
+        rotate(15deg)
+        scale(1.05);
 
 }
 
@@ -236,9 +363,9 @@ main {
 
     display: inline-block;
 
-    background: var(--verde-suave);
+    background: var(--vermelho-suave);
 
-    color: var(--verde);
+    color: var(--vermelho);
 
     padding: 8px 14px;
 
@@ -257,13 +384,14 @@ main {
 
 .hero h1 {
 
-    font-size: clamp(40px, 5vw, 65px);
+    font-size:
+        clamp(40px, 5vw, 65px);
 
     line-height: 1.05;
 
     letter-spacing: -2px;
 
-    color: var(--verde-escuro);
+    color: var(--texto);
 
     margin-bottom: 22px;
 
@@ -272,7 +400,7 @@ main {
 
 .hero h1 span {
 
-    color: var(--laranja);
+    color: var(--vermelho);
 
 }
 
@@ -283,7 +411,7 @@ main {
 
     font-size: 18px;
 
-    max-width: 540px;
+    max-width: 550px;
 
     margin-bottom: 30px;
 
@@ -302,7 +430,12 @@ main {
 
     gap: 12px;
 
-    background: var(--verde);
+    background:
+        linear-gradient(
+            135deg,
+            var(--vermelho),
+            var(--laranja)
+        );
 
     color: white;
 
@@ -317,16 +450,20 @@ main {
     transition: 0.3s;
 
     box-shadow:
-        0 7px 20px rgba(46, 125, 79, 0.2);
+        0 8px 25px
+        rgba(217, 54, 43, 0.2);
 
 }
 
 
 .botao-hero:hover {
 
-    background: var(--verde-escuro);
+    transform:
+        translateY(-3px);
 
-    transform: translateY(-2px);
+    box-shadow:
+        0 12px 30px
+        rgba(217, 54, 43, 0.3);
 
 }
 
@@ -339,7 +476,7 @@ main {
 
 
 /* ==================================================
-   IMAGEM DO HERO
+   IMAGEM PRINCIPAL
 ================================================== */
 
 .hero-imagem {
@@ -353,7 +490,29 @@ main {
     border-radius: 25px;
 
     box-shadow:
-        0 20px 50px rgba(18, 53, 36, 0.18);
+        0 20px 50px
+        rgba(18, 25, 20, 0.25);
+
+}
+
+
+.hero-imagem::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 25px;
+
+    z-index: 2;
+
+    pointer-events: none;
 
 }
 
@@ -368,6 +527,17 @@ main {
 
     display: block;
 
+    transition:
+        transform 0.6s ease;
+
+}
+
+
+.hero-imagem:hover img {
+
+    transform:
+        scale(1.05);
+
 }
 
 
@@ -380,8 +550,8 @@ main {
     background:
         linear-gradient(
             180deg,
-            transparent 45%,
-            rgba(18, 53, 36, 0.65)
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.72)
         );
 
 }
@@ -395,7 +565,10 @@ main {
 
     left: 20px;
 
-    background: rgba(255, 255, 255, 0.93);
+    background:
+        rgba(15, 20, 17, 0.88);
+
+    color: white;
 
     padding: 10px 15px;
 
@@ -411,22 +584,31 @@ main {
 
     gap: 8px;
 
-    color: var(--verde-escuro);
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    backdrop-filter:
+        blur(8px);
 
 }
 
 
-.ponto-verde {
+.ponto-vermelho {
 
     width: 9px;
 
     height: 9px;
 
-    background: #45a965;
+    background: #ff3b30;
 
     border-radius: 50%;
 
     display: block;
+
+    box-shadow:
+        0 0 10px
+        rgba(255, 59, 48, 0.8);
 
 }
 
@@ -451,9 +633,11 @@ main {
 
 .card {
 
-    background: white;
+    background: var(--branco);
 
-    border: 1px solid var(--cinza-claro);
+    border:
+        1px solid
+        var(--cinza-claro);
 
     border-radius: 16px;
 
@@ -468,22 +652,63 @@ main {
     transition: 0.3s;
 
     box-shadow:
-        0 5px 20px rgba(18, 53, 36, 0.05);
+        0 5px 20px
+        rgba(0, 0, 0, 0.05);
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 4px;
+
+    height: 100%;
+
+    background:
+        var(--verde);
+
+}
+
+
+.card-incendio::before {
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--vermelho),
+            var(--laranja)
+        );
 
 }
 
 
 .card:hover {
 
-    transform: translateY(-5px);
+    transform:
+        translateY(-5px);
 
     box-shadow:
-        0 15px 30px rgba(18, 53, 36, 0.1);
+        0 15px 30px
+        rgba(0, 0, 0, 0.1);
 
 }
 
 
-/* ÍCONES */
+/* ==================================================
+   ÍCONES
+================================================== */
 
 .card-icone {
 
@@ -506,26 +731,31 @@ main {
 
 .card-icone.fogo {
 
-    background: var(--laranja-claro);
+    background:
+        var(--vermelho-suave);
 
 }
 
 
 .card-icone.mapa {
 
-    background: var(--verde-suave);
+    background:
+        var(--verde-suave);
 
 }
 
 
 .card-icone.dados-icone {
 
-    background: #eaf0f7;
+    background:
+        #eaf0f7;
 
 }
 
 
-/* CONTEÚDO */
+/* ==================================================
+   TEXTO DOS CARDS
+================================================== */
 
 .card-label {
 
@@ -544,7 +774,7 @@ main {
 
     font-size: 27px;
 
-    color: var(--verde-escuro);
+    color: var(--texto);
 
     line-height: 1.2;
 
@@ -568,7 +798,7 @@ main {
 
 .dados {
 
-    background: white;
+    background: var(--branco);
 
     border-radius: 20px;
 
@@ -576,10 +806,13 @@ main {
 
     margin-bottom: 45px;
 
-    border: 1px solid var(--cinza-claro);
+    border:
+        1px solid
+        var(--cinza-claro);
 
     box-shadow:
-        0 8px 30px rgba(18, 53, 36, 0.05);
+        0 8px 30px
+        rgba(0, 0, 0, 0.05);
 
 }
 
@@ -593,7 +826,7 @@ main {
 
 .titulo-tag {
 
-    color: var(--verde);
+    color: var(--vermelho);
 
     font-size: 11px;
 
@@ -608,7 +841,7 @@ main {
 
     font-size: 30px;
 
-    color: var(--verde-escuro);
+    color: var(--texto);
 
     margin-top: 5px;
 
@@ -636,9 +869,11 @@ main {
 
     flex-wrap: wrap;
 
-    background: #f7faf7;
+    background: var(--fundo-filtro);
 
-    border: 1px solid var(--cinza-claro);
+    border:
+        1px solid
+        var(--cinza-claro);
 
     padding: 20px;
 
@@ -664,7 +899,7 @@ main {
 
 .campo-filtro label {
 
-    color: var(--verde-escuro);
+    color: var(--texto);
 
     font-size: 13px;
 
@@ -677,13 +912,15 @@ main {
 
     padding: 11px 14px;
 
-    border: 1px solid #ccd7ce;
+    border:
+        1px solid
+        var(--cinza-claro);
 
     border-radius: 9px;
 
-    background: white;
+    background: var(--branco);
 
-    color: #26382d;
+    color: var(--texto);
 
     font-size: 14px;
 
@@ -698,17 +935,20 @@ main {
 
 .campo-filtro select:hover {
 
-    border-color: var(--verde);
+    border-color:
+        var(--vermelho);
 
 }
 
 
 .campo-filtro select:focus {
 
-    border-color: var(--verde);
+    border-color:
+        var(--vermelho);
 
     box-shadow:
-        0 0 0 3px rgba(46, 125, 79, 0.1);
+        0 0 0 3px
+        rgba(217, 54, 43, 0.1);
 
 }
 
@@ -723,7 +963,9 @@ main {
 
     overflow-x: auto;
 
-    border: 1px solid var(--cinza-claro);
+    border:
+        1px solid
+        var(--cinza-claro);
 
     border-radius: 12px;
 
@@ -743,7 +985,12 @@ table {
 
 thead {
 
-    background: var(--verde-escuro);
+    background:
+        linear-gradient(
+            90deg,
+            #271311,
+            #351512
+        );
 
     color: white;
 
@@ -767,9 +1014,11 @@ td {
 
     padding: 13px 15px;
 
-    border-bottom: 1px solid #edf1ee;
+    border-bottom:
+        1px solid
+        var(--cinza-claro);
 
-    color: #3e4c43;
+    color: var(--texto-tabela);
 
     font-size: 14px;
 
@@ -785,7 +1034,8 @@ tbody tr {
 
 tbody tr:hover {
 
-    background: #f3f8f4;
+    background:
+        var(--vermelho-suave);
 
 }
 
@@ -826,13 +1076,15 @@ tbody tr:last-child td {
 
     padding: 0 12px;
 
-    border: 1px solid #d5ded7;
+    border:
+        1px solid
+        var(--cinza-claro);
 
     border-radius: 8px;
 
-    background: white;
+    background: var(--branco);
 
-    color: var(--verde-escuro);
+    color: var(--texto);
 
     font-size: 13px;
 
@@ -847,29 +1099,31 @@ tbody tr:last-child td {
 
 #paginacao button:hover:not(:disabled) {
 
-    background: var(--verde);
+    background:
+        var(--vermelho);
 
     color: white;
 
-    border-color: var(--verde);
+    border-color:
+        var(--vermelho);
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
 }
 
 
 #paginacao button.pagina-atual {
 
-    background: var(--verde);
+    background:
+        var(--vermelho);
 
     color: white;
 
-    border-color: var(--verde);
+    border-color:
+        var(--vermelho);
 
     font-weight: bold;
-
-    box-shadow:
-        0 4px 10px rgba(46, 125, 79, 0.2);
 
 }
 
@@ -906,7 +1160,12 @@ tbody tr:last-child td {
 
     gap: 25px;
 
-    background: var(--verde-escuro);
+    background:
+        linear-gradient(
+            135deg,
+            #13251a,
+            #1d241b
+        );
 
     color: white;
 
@@ -917,7 +1176,29 @@ tbody tr:last-child td {
     margin-bottom: 50px;
 
     box-shadow:
-        0 15px 35px rgba(18, 53, 36, 0.15);
+        0 15px 35px
+        rgba(0, 0, 0, 0.15);
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.sobre::after {
+
+    content: "🔥";
+
+    position: absolute;
+
+    right: 35px;
+
+    bottom: -25px;
+
+    font-size: 150px;
+
+    opacity: 0.06;
 
 }
 
@@ -930,7 +1211,12 @@ tbody tr:last-child td {
 
     border-radius: 15px;
 
-    background: rgba(255, 255, 255, 0.1);
+    background:
+        rgba(255, 59, 48, 0.12);
+
+    border:
+        1px solid
+        rgba(255, 59, 48, 0.25);
 
     display: flex;
 
@@ -945,7 +1231,7 @@ tbody tr:last-child td {
 
 .sobre .titulo-tag {
 
-    color: #8bd09d;
+    color: #ff6b5f;
 
 }
 
@@ -963,7 +1249,7 @@ tbody tr:last-child td {
 
 .sobre p {
 
-    color: #cbdacf;
+    color: #cbd5ce;
 
     max-width: 900px;
 
@@ -978,13 +1264,18 @@ tbody tr:last-child td {
 
 footer {
 
-    background: #0c2518;
+    background:
+        #080d0a;
 
-    color: #b8c8bd;
+    color: #aeb9b1;
 
     text-align: center;
 
     padding: 35px 20px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.05);
 
 }
 
@@ -1004,7 +1295,7 @@ footer {
 
 .footer-logo span {
 
-    color: #75c58d;
+    color: #ff4b3e;
 
 }
 
@@ -1022,7 +1313,112 @@ footer small {
 
     font-size: 11px;
 
-    color: #819488;
+    color: #77837b;
+
+}
+
+
+/* ==================================================
+   MODO ESCURO
+================================================== */
+
+body.modo-escuro .hero-imagem {
+
+    box-shadow:
+        0 20px 55px
+        rgba(255, 50, 40, 0.12);
+
+}
+
+
+body.modo-escuro .card {
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.25);
+
+}
+
+
+body.modo-escuro .card:hover {
+
+    box-shadow:
+        0 15px 35px
+        rgba(255, 50, 40, 0.08);
+
+}
+
+
+body.modo-escuro .card-icone.dados-icone {
+
+    background:
+        #202a31;
+
+}
+
+
+body.modo-escuro .campo-filtro select {
+
+    border-color:
+        #3a423d;
+
+}
+
+
+body.modo-escuro .tabela-container {
+
+    border-color:
+        #303733;
+
+}
+
+
+body.modo-escuro thead {
+
+    background:
+        linear-gradient(
+            90deg,
+            #2a0d0b,
+            #3b100d
+        );
+
+}
+
+
+body.modo-escuro .sobre {
+
+    background:
+        linear-gradient(
+            135deg,
+            #160b0a,
+            #21110f
+        );
+
+    border:
+        1px solid
+        #38201d;
+
+}
+
+
+/* ==================================================
+   TRANSIÇÕES
+================================================== */
+
+.card,
+.dados,
+.filtros,
+.campo-filtro select,
+.tabela-container,
+td,
+#paginacao button,
+.tag-ambiental {
+
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 
 }
 
@@ -1067,6 +1463,10 @@ footer small {
 }
 
 
+/* ==================================================
+   CELULAR
+================================================== */
+
 @media (max-width: 650px) {
 
     header {
@@ -1082,7 +1482,7 @@ footer small {
 
     nav {
 
-        gap: 20px;
+        gap: 18px;
 
     }
 
@@ -1163,6 +1563,13 @@ footer small {
     }
 
 
+    .sobre::after {
+
+        font-size: 100px;
+
+    }
+
+
     #paginacao {
 
         gap: 5px;
@@ -1179,6 +1586,17 @@ footer small {
         padding: 0 8px;
 
         font-size: 12px;
+
+    }
+
+
+    .botao-tema {
+
+        width: 38px;
+
+        height: 38px;
+
+        font-size: 17px;
 
     }
 
