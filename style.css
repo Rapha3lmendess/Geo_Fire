@@ -1,7 +1,6 @@
-
-/* =========================
+/* ==================================================
    CONFIGURAÇÕES GERAIS
-========================= */
+================================================== */
 
 * {
     margin: 0;
@@ -16,19 +15,19 @@ body {
 }
 
 
-/* =========================
+/* ==================================================
    CABEÇALHO
-========================= */
+================================================== */
 
 header {
-    background-color: #10130e;
+    background-color: #111;
     color: white;
-
-    padding: 20px 8%;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    padding: 20px 6%;
 }
 
 .logo {
@@ -44,25 +43,34 @@ nav {
 nav a {
     color: white;
     text-decoration: none;
+    font-size: 16px;
+
+    transition: 0.3s;
 }
 
 nav a:hover {
-    color: #ff6b35;
+    color: #ff6b00;
 }
 
 
-/* =========================
+/* ==================================================
+   CONTEÚDO PRINCIPAL
+================================================== */
+
+main {
+    width: 90%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+
+/* ==================================================
    HERO
-========================= */
+================================================== */
 
 .hero {
-    padding: 60px 8%;
-
-    background-color: #0d7a0d;
-
-    color: white;
-
     text-align: center;
+    padding: 60px 20px 40px;
 }
 
 .hero h1 {
@@ -71,24 +79,21 @@ nav a:hover {
 }
 
 .hero p {
+    color: #666;
     font-size: 18px;
 }
 
 
-/* =========================
+/* ==================================================
    CARDS
-========================= */
+================================================== */
 
 .cards {
-    width: 84%;
-
-    margin: 40px auto;
-
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 25px;
+
+    margin-bottom: 50px;
 }
 
 .card {
@@ -96,21 +101,20 @@ nav a:hover {
 
     padding: 30px;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     text-align: center;
 
-    box-shadow: 0 4px 12px rgba(236, 66, 66, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .card span {
-    font-size: 30px;
+    font-size: 35px;
 }
 
 .card h2 {
-    font-size: 32px;
-
-    margin: 15px 0;
+    font-size: 30px;
+    margin: 15px 0 8px;
 }
 
 .card p {
@@ -118,14 +122,20 @@ nav a:hover {
 }
 
 
-/* =========================
-   DADOS
-========================= */
+/* ==================================================
+   ÁREA DE DADOS
+================================================== */
 
 .dados {
-    width: 84%;
+    background-color: white;
 
-    margin: 50px auto;
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    margin-bottom: 40px;
 }
 
 .titulo-secao {
@@ -134,107 +144,216 @@ nav a:hover {
 
 .titulo-secao h2 {
     font-size: 28px;
-
     margin-bottom: 8px;
 }
 
+.titulo-secao p {
+    color: #666;
+}
 
-/* =========================
-   FILTRO
-========================= */
+
+/* ==================================================
+   FILTROS
+================================================== */
 
 .filtro {
-    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-    padding: 20px;
+    margin-bottom: 25px;
 
-    border-radius: 10px;
-
-    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .filtro label {
     font-weight: bold;
-
-    margin-right: 10px;
 }
 
-select {
-    padding: 10px;
+.filtro select {
+    padding: 10px 14px;
 
     border: 1px solid #ccc;
 
-    border-radius: 6px;
+    border-radius: 8px;
+
+    background-color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    outline: none;
+}
+
+.filtro select:focus {
+    border-color: #ff6b00;
 }
 
 
-/* =========================
+/* ==================================================
    TABELA
-========================= */
+================================================== */
 
 .tabela-container {
-    background-color: white;
-
-    border-radius: 10px;
+    width: 100%;
 
     overflow-x: auto;
 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
 }
 
 table {
     width: 100%;
 
     border-collapse: collapse;
+
+    min-width: 700px;
 }
 
-th,
-td {
-    padding: 15px;
-
-    text-align: left;
-
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #ce1111;
+thead {
+    background-color: #111;
 
     color: white;
 }
 
-tr:hover {
-    background-color: #f7f7f7;
+th,
+td {
+    padding: 14px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+    background-color: #fafafa;
 }
 
 
-/* =========================
-   SOBRE
-========================= */
+/* ==================================================
+   PAGINAÇÃO
+================================================== */
 
-.sobre {
-    width: 84%;
+#paginacao {
+    display: flex;
 
-    margin: 60px auto;
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 25px;
+
+    flex-wrap: wrap;
+}
+
+
+/* Botões da paginação */
+
+#paginacao button {
+    min-width: 38px;
+
+    height: 38px;
+
+    padding: 0 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
 
     background-color: white;
 
-    padding: 30px;
+    color: #333;
 
-    border-radius: 10px;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+/* Mouse em cima */
+
+#paginacao button:hover:not(:disabled) {
+    background-color: #ff6b00;
+
+    color: white;
+
+    border-color: #ff6b00;
+
+    transform: translateY(-2px);
+}
+
+
+/* Página atual */
+
+#paginacao button.pagina-atual {
+    background-color: #ff6b00;
+
+    color: white;
+
+    border-color: #ff6b00;
+
+    font-weight: bold;
+}
+
+
+/* Botões desativados */
+
+#paginacao button:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+}
+
+
+/* Reticências */
+
+#paginacao .pontos {
+    padding: 0 4px;
+
+    color: #777;
+
+    font-weight: bold;
+}
+
+
+/* ==================================================
+   SOBRE
+================================================== */
+
+.sobre {
+    background-color: white;
+
+    padding: 35px;
+
+    border-radius: 12px;
+
+    margin-bottom: 40px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .sobre h2 {
     margin-bottom: 15px;
 }
 
+.sobre p {
+    color: #666;
 
-/* =========================
+    line-height: 1.6;
+}
+
+
+/* ==================================================
    RODAPÉ
-========================= */
+================================================== */
 
 footer {
-    background-color: #120efc;
+    background-color: #111;
 
     color: white;
 
@@ -242,28 +361,50 @@ footer {
 
     padding: 25px;
 
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 
-/* =========================
+/* ==================================================
    RESPONSIVIDADE
-========================= */
+================================================== */
 
 @media (max-width: 768px) {
 
     header {
         flex-direction: column;
 
-        gap: 20px;
+        gap: 15px;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
     }
 
     .cards {
         grid-template-columns: 1fr;
     }
 
-    .hero h1 {
-        font-size: 30px;
+    .dados {
+        padding: 20px;
+    }
+
+    #paginacao {
+        gap: 5px;
+    }
+
+    #paginacao button {
+        min-width: 34px;
+
+        height: 34px;
+
+        padding: 0 8px;
+
+        font-size: 13px;
     }
 
 }
