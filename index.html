@@ -10,131 +10,309 @@
 
     <title>GeoFire - Monitoramento de Incêndios</title>
 
-    <!-- Ligação com o arquivo CSS -->
+    <!-- Ligação com o CSS -->
     <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-    <!-- CABEÇALHO -->
+    <!-- ==================================================
+         CABEÇALHO
+    ================================================== -->
+
     <header>
 
         <div class="logo">
-            🔥 GeoFire
+
+            <span class="logo-fogo">🔥</span>
+
+            <span>Geo<span class="verde">Fire</span></span>
+
         </div>
 
+
         <nav>
-            <a href="#">Início</a>
-            <a href="#dados">Dados</a>
-            <a href="#sobre">Sobre</a>
+
+            <a href="#" class="ativo">
+                Início
+            </a>
+
+            <a href="#dados">
+                Dados
+            </a>
+
+            <a href="#sobre">
+                Sobre
+            </a>
+
         </nav>
 
     </header>
 
 
-    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- ==================================================
+         CONTEÚDO PRINCIPAL
+    ================================================== -->
+
     <main>
 
-        <!-- TÍTULO -->
+
+        <!-- ==================================================
+             HERO
+        ================================================== -->
+
         <section class="hero">
 
-            <h1>Monitoramento de Incêndios</h1>
+            <div class="hero-conteudo">
 
-            <p>
-                Visualização e análise de ocorrências de incêndios
-                por estado.
-            </p>
+                <span class="tag-ambiental">
+                    🌿 MONITORAMENTO AMBIENTAL
+                </span>
+
+
+                <h1>
+                    Monitoramento de
+                    <span>Incêndios</span>
+                </h1>
+
+
+                <p>
+
+                    Visualização e análise de ocorrências
+                    de incêndios e queimadas por estado
+                    e período.
+
+                </p>
+
+
+                <a href="#dados" class="botao-hero">
+
+                    Explorar dados
+
+                    <span>↓</span>
+
+                </a>
+
+            </div>
+
+
+            <!-- ==================================================
+                 IMAGEM PRINCIPAL
+            ================================================== -->
+
+            <div class="hero-imagem">
+
+                <img
+                    src="https://images.pexels.com/photos/12735797/pexels-photo-12735797.jpeg"
+                    alt="Floresta e vegetação"
+                >
+
+                <div class="imagem-overlay"></div>
+
+
+                <div class="indicador-imagem">
+
+                    <span class="ponto-verde"></span>
+
+                    Dados ambientais
+
+                </div>
+
+            </div>
 
         </section>
 
 
-        <!-- CARDS -->
+        <!-- ==================================================
+             CARDS
+        ================================================== -->
+
         <section class="cards">
 
+
+            <!-- CARD TOTAL -->
+
             <div class="card">
 
-                <span>🔥</span>
+                <div class="card-icone fogo">
+                    🔥
+                </div>
 
-                <h2 id="totalIncendios">0</h2>
 
-                <p>Total de ocorrências</p>
+                <div class="card-conteudo">
+
+                    <span class="card-label">
+                        OCORRÊNCIAS
+                    </span>
+
+
+                    <h2 id="totalIncendios">
+                        0
+                    </h2>
+
+
+                    <p>
+                        Total de ocorrências
+                    </p>
+
+                </div>
 
             </div>
 
 
+            <!-- CARD ESTADO -->
+
             <div class="card">
 
-                <span>📍</span>
+                <div class="card-icone mapa">
+                    📍
+                </div>
 
-                <h2 id="estadoMaior">-</h2>
 
-                <p>Estado com mais ocorrências</p>
+                <div class="card-conteudo">
+
+                    <span class="card-label">
+                        DESTAQUE
+                    </span>
+
+
+                    <h2 id="estadoMaior">
+                        -
+                    </h2>
+
+
+                    <p>
+                        Estado com mais ocorrências
+                    </p>
+
+                </div>
 
             </div>
 
 
+            <!-- CARD MÉDIA -->
+
             <div class="card">
 
-                <span>📊</span>
+                <div class="card-icone dados-icone">
+                    📊
+                </div>
 
-                <h2 id="mediaIncendios">0</h2>
 
-                <p>Média de ocorrências</p>
+                <div class="card-conteudo">
+
+                    <span class="card-label">
+                        MÉDIA
+                    </span>
+
+
+                    <h2 id="mediaIncendios">
+                        0
+                    </h2>
+
+
+                    <p>
+                        Média de ocorrências
+                    </p>
+
+                </div>
 
             </div>
 
         </section>
 
 
-        <!-- ÁREA DE DADOS -->
+        <!-- ==================================================
+             ÁREA DE DADOS
+        ================================================== -->
+
         <section id="dados" class="dados">
+
 
             <div class="titulo-secao">
 
-                <h2>Dados dos incêndios</h2>
+                <div>
 
-                <p>
-                    Utilize os filtros para consultar os registros.
-                </p>
-
-            </div>
+                    <span class="titulo-tag">
+                        📊 BASE DE DADOS
+                    </span>
 
 
-            <!-- FILTROS -->
-            <div class="filtro">
-
-                <!-- FILTRO POR ESTADO -->
-                <label for="filtroEstado">
-                    Filtrar por estado:
-                </label>
-
-                <select id="filtroEstado">
-
-                    <option value="todos">
-                        Todos os estados
-                    </option>
-
-                </select>
+                    <h2>
+                        Dados dos incêndios
+                    </h2>
 
 
-                <!-- FILTRO POR ANO -->
-                <label for="filtroAno">
-                    Filtrar por ano:
-                </label>
+                    <p>
 
-                <select id="filtroAno">
+                        Utilize os filtros para explorar
+                        os registros disponíveis.
 
-                    <option value="todos">
-                        Todos os anos
-                    </option>
+                    </p>
 
-                </select>
+                </div>
 
             </div>
 
 
-            <!-- TABELA -->
+            <!-- ==================================================
+                 FILTROS
+            ================================================== -->
+
+            <div class="filtros">
+
+
+                <!-- FILTRO ESTADO -->
+
+                <div class="campo-filtro">
+
+                    <label for="filtroEstado">
+
+                        📍 Estado
+
+                    </label>
+
+
+                    <select id="filtroEstado">
+
+                        <option value="todos">
+                            Todos os estados
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- FILTRO ANO -->
+
+                <div class="campo-filtro">
+
+                    <label for="filtroAno">
+
+                        📅 Ano
+
+                    </label>
+
+
+                    <select id="filtroAno">
+
+                        <option value="todos">
+                            Todos os anos
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================================
+                 TABELA
+            ================================================== -->
+
             <div class="tabela-container">
 
                 <table>
@@ -143,15 +321,25 @@
 
                         <tr>
 
-                            <th>Ano</th>
+                            <th>
+                                Ano
+                            </th>
 
-                            <th>Estado</th>
+                            <th>
+                                Estado
+                            </th>
 
-                            <th>Mês</th>
+                            <th>
+                                Mês
+                            </th>
 
-                            <th>Ocorrências</th>
+                            <th>
+                                Ocorrências
+                            </th>
 
-                            <th>Data</th>
+                            <th>
+                                Data
+                            </th>
 
                         </tr>
 
@@ -168,38 +356,96 @@
 
             </div>
 
+
         </section>
 
 
-        <!-- SOBRE -->
+        <!-- ==================================================
+             SOBRE O PROJETO
+        ================================================== -->
+
         <section id="sobre" class="sobre">
 
-            <h2>Sobre o projeto</h2>
 
-            <p>
+            <div class="sobre-icone">
+                🌿
+            </div>
 
-                O GeoFire é um projeto desenvolvido para estudar
-                HTML, CSS e JavaScript utilizando dados relacionados
-                a incêndios e queimadas.
 
-            </p>
+            <div>
+
+                <span class="titulo-tag">
+                    SOBRE O PROJETO
+                </span>
+
+
+                <h2>
+                    Tecnologia a favor do
+                    monitoramento ambiental
+                </h2>
+
+
+                <p>
+
+                    O GeoFire é um projeto desenvolvido
+                    para estudar programação, tratamento
+                    de dados e visualização de informações
+                    relacionadas a incêndios e queimadas.
+
+                </p>
+
+
+                <p>
+
+                    O projeto utiliza dados em formato CSV
+                    e JavaScript para transformar registros
+                    em informações que podem ser consultadas
+                    de forma simples e organizada.
+
+                </p>
+
+            </div>
 
         </section>
+
 
     </main>
 
 
-    <!-- RODAPÉ -->
+    <!-- ==================================================
+         RODAPÉ
+    ================================================== -->
+
     <footer>
 
+        <div class="footer-logo">
+
+            🔥 Geo<span>Fire</span>
+
+        </div>
+
+
         <p>
-            GeoFire © 2026
+
+            Monitoramento e visualização de dados
+            ambientais.
+
         </p>
+
+
+        <small>
+
+            GeoFire © 2026
+
+        </small>
 
     </footer>
 
 
-    <!-- Ligação com o JavaScript -->
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
     <script src="script.js"></script>
 
 </body>
